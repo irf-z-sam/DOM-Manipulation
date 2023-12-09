@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        form{
+        background-color:rgb(0, 238, 255);
+        color:green;
+        }
+        input{   
+           width:500px;
+            }
+        </style>
+  <form onsubmit="takevalue(event)">
+    <fieldset>
+    <legend>
+        <h1>Registration Form</h1>
+    </legend>
+    <div>
+        <label>Name:</label><br>
+         <input type="text" id="name" name="name"  style="width:500px;">
+    </div>
+    <br>
+    <div>
+        Father Name:<br> <input type="text" id="fathername" name="fathername">
+    </div>
+    <br>
+    <div>
+        Mother Name:<br> <input type="text" id="mothername" name="mothername">
+    </div><br>
+    <div>
+        Mobile:<br><input type="text" id="mobile">
+    </div><br>
+    <div>
+        Email:<br><input type="email" name="My email" id="email">
+    </div><br>
+    <div>
+        Password:<br><input type="password" id="password">
+    </div><br>
+    <div>
+    Gender:<br>   Male: <input type="radio" name="Gender" style="width:50px"; id="male">
+        Female: <input type="radio" name="Gender" style="width:50px" id="female">
+        Others: <input type="radio" name="Gender" style="width:50px" id="others">
+    </div><br>
+    <div>
+        Date Of Birth:<br><input type="date" id="dob">
+    </div><br>
+    <div>
+        Address:<br><input type="text" id="add">
+    </div><br>
+    <div>
+        <input type="Submit" value="Submit" style="width:100px;color:red;">
+        <input type="Reset" value="Reset" style="width:100px;color:green;">
+    </div>
+</fieldset>
+    </form>
+    <script src="localStorage.js"> 
+    </script>
+</body>
+</html>
