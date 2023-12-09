@@ -23,14 +23,6 @@ function takevalue(event){
        document.write("Your Password is : "+password+"<br>");
        document.write("Your Date Of Birth is : "+dob+"<br>");
         
-     /*  console.log(name);
-       console.log(fathername);
-       console.log(mothername);
-       console.log(mobile);
-       console.log(email);
-       console.log(password);
-       console.log(dob);*/
-
        //STORING ELEMENT ON LOCAL-STORAGE AFTER SUBMIT
        localStorage.setItem("Name",name);
        localStorage.setItem("Father Name",fathername);
