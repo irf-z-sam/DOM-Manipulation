@@ -1,45 +1,55 @@
-//QUERY_SELECTOR//
-// var header=document.querySelector("#main-header");
-// header.computedStyleMap.border="solid 4px black";
+//TRAVERSING THE DOM
+var itemList=document.querySelector("#items");
+//PARENT NODE
+console.log(itemList.parentNode);
+itemList.parentNode.style.backgroundColor="grey";
+console.log(itemList.parentNode.parentNode);
+console.log(itemList.parentNode.parentNode.parentNode);
+//PARENT ELEMENT
+console.log(itemList.parentElement);
+itemList.parentElement.style.backgroundColor="grey";
+console.log(itemList.parentElement.parentElement);
+console.log(itemList.parentElement.parentElement.parentElement);
+//CHILD NODE
+console.log(itemList.childNodes);
+console.log(itemList.children);
+console.log(itemList.children[1]);
+itemList.children[1].style.backgroundColor="yellow";
+//FIRST CHILD
+console.log(itemList.firstChild);
+console.log(itemList.firstElementChild);
+//itemList.firstElementChild.textContent="Hello 1";
 
-// var input = document.querySelector("input");
-// input.value="Hello World";
+//LAST CHILD
+console.log(itemList.lastChild);
+console.log(itemList.lastElementChild);
+//itemList.lastElementChild.textContent="Hello 1";
 
-// var submit=document.querySelector('input[type="submit"]');
-// submit.value="Click Me !"
+//NEXT SIBLING
+console.log(itemList.nextSibling);
+console.log(itemList.nextElementSibling);
 
-// var item=document.querySelector(".list-group-item");
-// item.style.color="blue";
+//PREVIOUS SIBLING
+console.log(itemList.previousSibling);
+console.log(itemList.previousElementSibling);
+itemList.previousElementSibling.style.color="green";
 
-// var lastItem=document.querySelector(".list-group-item:last-child");
-// lastItem.style.color="coral";
+//CREATE ELEMENT
+//CREATE A DIV
+var newDiv=document.createElement("div");
+//Add Class
+newDiv.className="hello";
+//Add Id
+newDiv.id="hello1";
+//Add Attr
+newDiv.setAttribute("title","Hello Div");
+//Create Text Node
+var newDivText=document.createTextNode("Hello World");
+//Add Text To Div
+newDiv.appendChild(newDivText);
+var container=document.querySelector("header .container");
+var h1=document.querySelector("header h1");
 
-var secondItem=document.querySelector(".list-group-item:nth-child(2)");
-console.log(secondItem);
-secondItem.style.backgroundColor="green";
-
-var thirdItem=document.querySelector(".list-group-item:nth-child(3)");
-thirdItem.style.visibility="hidden";
-
-//QUERY_SELECTOR_ALL//
-
-// var titles=document.querySelectorAll(".title");
-// console.log(titles);
-// titles[0].textContent="Hey";
-
-// var secondItem=document.querySelector(".list-group-item:nth-child(2)");
-// secondItem.style.color="red";
-
-var item=document.querySelectorAll(".list-group-item");
-console.log(item);
-item[1].style.color="red";
-
-var odd=document.querySelectorAll("li:nth-child(odd)");
-for(var i=0;i<odd.length;i++){
-    odd[i].style.backgroundColor="green";
-}
-
-// var even=document.querySelectorAll("li:nth-child(even)");
-// for(var i=0;i<even.length;i++){
-//     even[i].style.backgroundColor="yellow";
-// }
+console.log(newDiv);
+newDiv.style.fontSize="30px";
+container.insertBefore(newDiv,h1);
