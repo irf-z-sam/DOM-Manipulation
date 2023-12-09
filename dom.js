@@ -1,55 +1,67 @@
-//TRAVERSING THE DOM
-var itemList=document.querySelector("#items");
-//PARENT NODE
-console.log(itemList.parentNode);
-itemList.parentNode.style.backgroundColor="grey";
-console.log(itemList.parentNode.parentNode);
-console.log(itemList.parentNode.parentNode.parentNode);
-//PARENT ELEMENT
-console.log(itemList.parentElement);
-itemList.parentElement.style.backgroundColor="grey";
-console.log(itemList.parentElement.parentElement);
-console.log(itemList.parentElement.parentElement.parentElement);
-//CHILD NODE
-console.log(itemList.childNodes);
-console.log(itemList.children);
-console.log(itemList.children[1]);
-itemList.children[1].style.backgroundColor="yellow";
-//FIRST CHILD
-console.log(itemList.firstChild);
-console.log(itemList.firstElementChild);
-//itemList.firstElementChild.textContent="Hello 1";
+var form = document.getElementById('addForm');
+var itemList = document.getElementById('items');
+var filter = document.getElementById('filter');
 
-//LAST CHILD
-console.log(itemList.lastChild);
-console.log(itemList.lastElementChild);
-//itemList.lastElementChild.textContent="Hello 1";
+ // Form submit event
+ form.addEventListener('submit', addItem);
+ // Delete event
+ itemList.addEventListener('click', removeItem);
+ // Filter event
+ filter.addEventListener('keyup', filterItems);
 
-//NEXT SIBLING
-console.log(itemList.nextSibling);
-console.log(itemList.nextElementSibling);
+ // Add item
+ function addItem(e){
+   e.preventDefault();
 
-//PREVIOUS SIBLING
-console.log(itemList.previousSibling);
-console.log(itemList.previousElementSibling);
-itemList.previousElementSibling.style.color="green";
+   // Get input value
+ var newItem = document.getElementById('item').value;
 
-//CREATE ELEMENT
-//CREATE A DIV
-var newDiv=document.createElement("div");
-//Add Class
-newDiv.className="hello";
-//Add Id
-newDiv.id="hello1";
-//Add Attr
-newDiv.setAttribute("title","Hello Div");
-//Create Text Node
-var newDivText=document.createTextNode("Hello World");
-//Add Text To Div
-newDiv.appendChild(newDivText);
-var container=document.querySelector("header .container");
-var h1=document.querySelector("header h1");
+   // Create new li element
+   var li = document.createElement('li');
+   // Add class
+   li.className = 'list-group-item';
+   // Add text node with input value
+  li.appendChild(document.createTextNode(newItem));
 
-console.log(newDiv);
-newDiv.style.fontSize="30px";
-container.insertBefore(newDiv,h1);
+  // Create del button element
+  var deleteBtn = document.createElement('button');
+
+  // Add classes to del button
+  deleteBtn.className = 'btn btn-danger btn-sm float-right delete';
+
+  // Append text node
+  deleteBtn.appendChild(document.createTextNode('X'));
+
+  // Append button to li
+  li.appendChild(deleteBtn);
+
+  // Append li to list
+  itemList.appendChild(li);
+}
+
+// Remove item
+function removeItem(e){
+  if(e.target.classList.contains('delete')){
+    if(confirm('Are You Sure?')){
+      var li = e.target.parentElement;
+      itemList.removeChild(li);
+    }
+  }
+}
+
+// Filter Items
+function filterItems(e){
+  // convert text to lowercase
+  var text = e.target.value.toLowerCase();
+  // Get lis
+  var items = itemList.getElementsByTagName('li');
+  // Convert to an array
+  Array.from(items).forEach(function(item){
+    var itemName = item.firstChild.textContent;
+    if(itemName.toLowerCase().indexOf(text) != -1){
+      item.style.display = 'block';
+    } else {
+      item.style.display = 'none';
+    }
+  });
+}
