@@ -24,17 +24,30 @@ function takevalue(event){
        document.write("Your Date Of Birth is : "+dob+"<br>");
         
        //STORING ELEMENT ON LOCAL-STORAGE AS AN OBJECT AFTER SUBMIT
-       let user={
+    //    let user={
+    //     "Name" : name,
+    //     "Father Name" : fathername,
+    //     "Mother Name" : mothername,
+    //     "Mobile" : mobile,
+    //     "Email Id" : email,
+    //     "DOB" : dob
+    //    }
+       //STORING MULTIPLE OBJECT ON LOCALSTORAGE
+       var userData=JSON.parse(localStorage.getItem("userData")) ?? [];
+       userData.push({
         "Name" : name,
         "Father Name" : fathername,
         "Mother Name" : mothername,
         "Mobile" : mobile,
         "Email Id" : email,
-        "DOB" : dob
-       }
-       localStorage.setItem("user",JSON.stringify(user));
-       console.log(localStorage);
-       //STORING ELEMENT ON LOCAL-STORAGE AFTER SUBMIT
+        "DOB" : dob 
+       })
+       localStorage.setItem("userData",JSON.stringify(userData));
+       //TO SEND DATA ON LOCAL STORAGE
+    //    localStorage.setItem("user",JSON.stringify(user));
+    //    //TO GET DATA FROM LOCAL STORAGE
+    //    console.log(JSON.parse(localStorage.getItem("user")));
+    //    //STORING ELEMENT ON LOCAL-STORAGE AFTER SUBMIT
     //    localStorage.setItem("Name",name);
     //    localStorage.setItem("Father Name",fathername);
     //    localStorage.setItem("Mother Name",mothername);
